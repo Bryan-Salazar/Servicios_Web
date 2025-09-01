@@ -1,0 +1,12 @@
+[
+  { "id": 1, "nombre": "Carolina", "edad": 55, "ciudad": "Cali" },
+  { "id": 2, "nombre": "Jorge", "edad": 30, "ciudad": "Bogotá" },
+  { "id": 3, "nombre": "Sergio", "edad": 28, "ciudad": "Medellín" },
+  { "id": 4, "nombre": "Yuri", "edad": 35, "ciudad": "Barranquilla" },
+  { "id": 5, "nombre": "Jhon", "edad": 22, "ciudad": "Cartagena" },
+  { "id": 6, "nombre": "Pablo", "edad": 40, "ciudad": "Cali" },
+  { "id": 7, "nombre": "Victor", "edad": 27, "ciudad": "Pereira" },
+  { "id": 8, "nombre": "Manuel", "edad": 32, "ciudad": "Manizales" },
+  { "id": 9, "nombre": "Camilo", "edad": 29, "ciudad": "Bucaramanga" },
+  { "id": 10, "nombre": "Bryan", "edad": 23, "ciudad": "Pereira" }
+]
