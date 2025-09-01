@@ -21,6 +21,9 @@
 .section-title{display:flex;align-items:center;gap:10px;color:var(--azulos)}
 .section-title .dot{width:12px;height:12px;border-radius:50%;background:var(--amarillo)
 }
+
+.texto1{display:inline-block;background:rgba(27,59,111,.08);color:var(--azulos);
+  padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700}
 .cards-flex {
   display: flex;
   flex-wrap: wrap;
@@ -61,4 +64,3 @@ cursor:pointer;box-shadow:var(--sombra)}
 .navbar .nav-link:hover::after {
   width: 100%;
 }
-
