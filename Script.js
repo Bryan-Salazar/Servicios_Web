@@ -1,14 +1,3 @@
-// Utilidad copiar
-document.querySelectorAll('.copy').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-	const sel = document.querySelector(btn.dataset.copy);
-	navigator.clipboard.writeText(sel.innerText).then(()=>{
-	  btn.textContent='Copiado'; setTimeout(()=>btn.textContent='Copiar',1200);
-	});
-  });
-});
-
-// DEMO 1: Definición / Clima
 function demoClima(){
   const method = document.getElementById('httpMethod').value;
   const url = document.getElementById('endpoint').value;
@@ -18,7 +7,6 @@ function demoClima(){
   log.textContent = `> ${method} ${url} HTTP/1.1\n< 200 OK\n${JSON.stringify(respuesta,null,2)}`;
 }
 
-// DEMO 2: SOA orquestación
 function simularSOA(){
   const steps = [
 	'1) Servicio Estudiantes valida requisitos…',
@@ -35,7 +23,6 @@ function simularSOA(){
   }, 650);
 }
 
-// DEMO 3: Beneficios/Desafíos - latencia
 function testLatencia(){
   const log = document.getElementById('latenciaLog');
   log.textContent = 'Invocando servicio…';
@@ -47,14 +34,12 @@ function testLatencia(){
   }, delay);
 }
 
-// DEMO 4: SOAP
 function demoSOAP(){
   const log = document.getElementById('soapLog');
   const xml = `<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">\n  <soap:Body>\n    <GetAlumnoResponse xmlns="http://ejemplo.edu/alumnos">\n      <alumno><id>1023</id><nombre>Ana</nombre></alumno>\n    </GetAlumnoResponse>\n  </soap:Body>\n</soap:Envelope>`;
   log.textContent = 'Enviando…\n' + xml;
 }
 
-// DEMO 5: REST
 const store = {
   '/api/estudiantes/1023': { id:1023, nombre:'Ana', programa:'Sistemas' },
   '/api/estudiantes': [ {id:1001,nombre:'Luis'}, {id:1023,nombre:'Ana'} ]
@@ -86,13 +71,11 @@ function demoREST(){
   }catch(e){ log.textContent='Error de parseo JSON'; }
 }
 
-// DEMO 6: HTTP códigos
 function httpStatus(code){
   const map = {200:'OK',404:'Not Found',500:'Internal Server Error'};
   document.getElementById('httpLog').textContent = `${code} ${map[code]}\nDate: ${new Date().toUTCString()}\nServer: demo/1.0`;
 }
 
-// DEMO 7: UDDI
 function buscarUDDI(){
   const q = (document.getElementById('uddiQuery').value||'').toLowerCase();
   const registro = [
@@ -102,4 +85,5 @@ function buscarUDDI(){
   ];
   const res = registro.filter(s=>s.nombre.toLowerCase().includes(q));
   document.getElementById('uddiLog').textContent = res.length? JSON.stringify(res,null,2) : 'Sin resultados';
+
 }
