@@ -4,8 +4,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Servicios Web — Guía Interactiva</title>
-  <link rel="stylesheet" href="Estilo.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>
   <header class="topbar">
@@ -30,11 +28,12 @@
     <div class="wrap">
       <div class="grid">
         <div>
-          <h1 style="font-size:40px;line-height:1.1;margin:10px 0 8px">Comprende los Servicios Web con ejemplos interactivos</h1>
+          <div class="badge">⚙️ Guía práctica con demos</div>
+          <h1 style="font-size:40px;line-height:1.1;margin:10px 0 8px">Comprende los <span class="highlight">Servicios Web</span> con ejemplos interactivos</h1>
           <p class="subtitle">Conceptos esenciales, arquitectura SOA, tipos (SOAP/REST) y los estándares claves — con pequeñas simulaciones para ver cómo funcionan.</p>
           <div class="cta">
-            <a class="btn primary" href="#definicion">Inicar</a>
-            <a class="btn ghost" href="#tipos">Ver demostración</a>
+            <a class="btn primary" href="#definicion">Empezar</a>
+            <a class="btn ghost" href="#tipos">Ver demos</a>
           </div>
         </div>
         <div>
@@ -46,197 +45,211 @@
               <li>El servicio procesa y responde en <strong>JSON</strong> o <strong>XML</strong>.</li>
               <li>Con SOAP, sigue un <strong>contrato WSDL</strong>; con REST, usa <strong>recursos/URLs</strong>.</li>
             </ol>
-            <p class="subtitle" style="color:#e8f0ff">Abajo podrás simular cada paso</p>
+            <p class="subtitle" style="color:#e8f0ff">Abajo podrás simular cada paso ✨</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <main class="container">
-  <div>
-	<!-- 1. Definición -->
-	<section id="definicion">
-	  <h2 class="section-title"><span class="dot"></span>Definición y conceptos clave</h2>
-	  <div class="cards">
-		<div class="card">
-		  <p><span class="pill">¿Qué es?</span></p>
-		  <p>Un <strong>servicio web</strong> es una funcionalidad accesible a través de una red (generalmente Internet) que permite la <strong>interoperabilidad</strong> entre aplicaciones. Expone operaciones (métodos) que otros sistemas consumen usando protocolos abiertos.</p>
-		  <ul>
-			<li><strong>Proveedor</strong>: publica y ofrece el servicio.</li>
-			<li><strong>Consumidor</strong>: cliente que envía solicitudes.</li>
-			<li><strong>Contrato</strong>: reglas/formato de intercambio (p. ej., WSDL/JSON).</li>
-			<li><strong>Mensajería</strong>: mensajes HTTP con cuerpo <em>JSON</em> o <em>XML</em>.</li>
-		  </ul>
-		</div>
-		<div class="card">
-		  <p><span class="pill">Ejemplo</span></p>
-		  <div class="demo">
-			<label>Petición a un servicio de clima (simulado):</label>
-			<div style="display:flex;gap:8px;flex-wrap:wrap">
-			  <select id="httpMethod">
-				<option>GET</option>
-				<option>POST</option>
-			  </select>
-			  <input class="input" id="endpoint" value="/api/clima?ciudad=Zarzal"/>
-			  <button class="btn" style="background:var(--blue);color:#fff" onclick="demoClima()">Enviar</button>
-			</div>
-			<pre class="code" id="demoClimaLog"></pre>
-		  </div>
-		</div>
-	  </div>
-	</section>
+  <main class="wrap" style="padding-top:32px">
+    <div class="layout">
+      <!-- Índice lateral -->
+      <aside class="toc">
+        <div class="card">
+          <h3 style="margin:0 0 8px;color:var(--blue-700)">Contenido</h3>
+          <a href="#definicion">Definición y conceptos clave</a>
+          <a href="#soa">Principios SOA</a>
+          <a href="#beneficios">Beneficios y desafíos</a>
+          <a href="#tipos">Tipos: SOAP vs REST</a>
+          <a href="#protocolos">Protocolos y estándares</a>
+        </div>
+      </aside>
 
-	<!-- 2. SOA -->
-	<section id="soa">
-	  <h2 class="section-title"><span class="dot"></span>Principios de la arquitectura orientada a servicios (SOA)</h2>
-	  <div class="cards">
-		<article class="card col-6">
-		  <ul>
-			<li><strong>Acoplamiento débil:</strong> cambios internos no rompen a los consumidores.</li>
-			<li><strong>Reutilización:</strong> servicios compartidos por múltiples aplicaciones.</li>
-			<li><strong>Contratos explícitos:</strong> interfaz estable y documentada.</li>
-			<li><strong>Descubrimiento:</strong> posibilidad de encontrar servicios en un <em>registro</em>.</li>
-			<li><strong>Composición:</strong> servicios se orquestan para procesos más grandes.</li>
-			<li><strong>Autonomía/Estado mínimo:</strong> preferir operaciones <em>idempotentes</em>.</li>
-		  </ul>
-		</article>
-		<article class="card col-6">
-		  <p><span class="pill">Ejemplo aplicado</span></p>
-		  <p>Proceso de matrícula orquesta 3 servicios: <em>Estudiantes</em>, <em>Pagos</em> y <em>Horarios</em>. Presiona para ver el flujo.</p>
-		  <button class="btn primary" onclick="simularSOA()">Simular matrícula</button>
-		  <pre class="code" id="soaLog"></pre>
-		</article>
-	  </div>
-	</section>
+      <div>
+        <!-- 1. Definición -->
+        <section id="definicion">
+          <h2 class="section-title"><span class="dot"></span>Definición y conceptos clave</h2>
+          <div class="cards">
+            <article class="card col-6">
+              <p><span class="pill">¿Qué es?</span></p>
+              <p>Un <strong>servicio web</strong> es una funcionalidad accesible a través de una red (generalmente Internet) que permite la <strong>interoperabilidad</strong> entre aplicaciones. Expone operaciones (métodos) que otros sistemas consumen usando protocolos abiertos.</p>
+              <ul>
+                <li><strong>Proveedor</strong>: publica y ofrece el servicio.</li>
+                <li><strong>Consumidor</strong>: cliente que envía solicitudes.</li>
+                <li><strong>Contrato</strong>: reglas/formato de intercambio (p. ej., WSDL/JSON).</li>
+                <li><strong>Mensajería</strong>: mensajes HTTP con cuerpo <em>JSON</em> o <em>XML</em>.</li>
+              </ul>
+            </article>
+            <article class="card col-6">
+              <p><span class="pill">Ejemplo rápido</span></p>
+              <div class="demo">
+                <label>Petición a un servicio de clima (simulado):</label>
+                <div style="display:flex;gap:8px;flex-wrap:wrap">
+                  <select id="httpMethod">
+                    <option>GET</option>
+                    <option>POST</option>
+                  </select>
+                  <input class="input" id="endpoint" value="/api/clima?ciudad=Zarzal"/>
+                  <button class="btn" style="background:var(--blue);color:#fff" onclick="demoClima()">Enviar</button>
+                </div>
+                <pre class="code" id="demoClimaLog"></pre>
+              </div>
+            </article>
+          </div>
+        </section>
 
-	<!-- 3. Beneficios y desafíos -->
-	<section id="beneficios">
-	  <h2 class="section-title"><span class="dot"></span>Beneficios y desafíos</h2>
-	  <div class="cards">
-		<article class="card col-6">
-		  <h3>Beneficios</h3>
-		  <ul>
-			<li>Integración entre lenguajes y plataformas.</li>
-			<li>Escalabilidad y despliegue independiente.</li>
-			<li>Reutilización y reducción de duplicidad.</li>
-			<li>Automatización de procesos (composición/orquestación).</li>
-		  </ul>
-		</article>
-		<article class="card col-6">
-		  <h3>Desafíos</h3>
-		  <ul>
-			<li>Gobernanza y versionamiento de contratos.</li>
-			<li>Seguridad (autenticación, autorización, cifrado).</li>
-			<li>Observabilidad (trazabilidad, monitoreo, SLAs).</li>
-			<li>Latencia y manejo de fallos en red.</li>
-		  </ul>
-		  <div class="demo">
-			<button class="btn" style="background:var(--navy);color:#fff" onclick="testLatencia()">Simular latencia/fallo</button>
-			<pre class="code" id="latenciaLog"></pre>
-		  </div>
-		</article>
-	  </div>
-	</section>
+        <!-- 2. SOA -->
+        <section id="soa">
+          <h2 class="section-title"><span class="dot"></span>Principios de la arquitectura orientada a servicios (SOA)</h2>
+          <div class="cards">
+            <article class="card col-6">
+              <ul>
+                <li><strong>Acoplamiento débil:</strong> cambios internos no rompen a los consumidores.</li>
+                <li><strong>Reutilización:</strong> servicios compartidos por múltiples aplicaciones.</li>
+                <li><strong>Contratos explícitos:</strong> interfaz estable y documentada.</li>
+                <li><strong>Descubrimiento:</strong> posibilidad de encontrar servicios en un <em>registro</em>.</li>
+                <li><strong>Composición:</strong> servicios se orquestan para procesos más grandes.</li>
+                <li><strong>Autonomía/Estado mínimo:</strong> preferir operaciones <em>idempotentes</em>.</li>
+              </ul>
+            </article>
+            <article class="card col-6">
+              <p><span class="pill">Ejemplo aplicado</span></p>
+              <p>Proceso de matrícula orquesta 3 servicios: <em>Estudiantes</em>, <em>Pagos</em> y <em>Horarios</em>. Presiona para ver el flujo.</p>
+              <button class="btn primary" onclick="simularSOA()">Simular matrícula</button>
+              <pre class="code" id="soaLog"></pre>
+            </article>
+          </div>
+        </section>
 
-	<!-- 4. Tipos -->
-	<section id="tipos">
-	  <h2 class="section-title"><span class="dot"></span>Tipos de servicios web: SOAP y REST</h2>
-	  <div class="cards">
-		<article class="card col-6">
-		  <h3>SOAP (Simple Object Access Protocol)</h3>
-		  <p>Protocolo basado en <strong>XML</strong> con mensajes estándar (sobre HTTP, SMTP, etc.). Utiliza contratos formales <strong>WSDL</strong> y define <em>envelopes</em>, cabeceras y cuerpo.</p>
-		  <div class="code"><button class="copy" data-copy="#soapReq">Copiar</button><pre id="soapReq">POST /ws/Estudiantes HTTP/1.1
+        <!-- 3. Beneficios y desafíos -->
+        <section id="beneficios">
+          <h2 class="section-title"><span class="dot"></span>Beneficios y desafíos</h2>
+          <div class="cards">
+            <article class="card col-6">
+              <h3>Beneficios</h3>
+              <ul>
+                <li>Integración entre lenguajes y plataformas.</li>
+                <li>Escalabilidad y despliegue independiente.</li>
+                <li>Reutilización y reducción de duplicidad.</li>
+                <li>Automatización de procesos (composición/orquestación).</li>
+              </ul>
+            </article>
+            <article class="card col-6">
+              <h3>Desafíos</h3>
+              <ul>
+                <li>Gobernanza y versionamiento de contratos.</li>
+                <li>Seguridad (autenticación, autorización, cifrado).</li>
+                <li>Observabilidad (trazabilidad, monitoreo, SLAs).</li>
+                <li>Latencia y manejo de fallos en red.</li>
+              </ul>
+              <div class="demo">
+                <button class="btn" style="background:var(--navy);color:#fff" onclick="testLatencia()">Simular latencia/fallo</button>
+                <pre class="code" id="latenciaLog"></pre>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- 4. Tipos -->
+        <section id="tipos">
+          <h2 class="section-title"><span class="dot"></span>Tipos de servicios web: SOAP y REST</h2>
+          <div class="cards">
+            <article class="card col-6">
+              <h3>SOAP (Simple Object Access Protocol)</h3>
+              <p>Protocolo basado en <strong>XML</strong> con mensajes estándar (sobre HTTP, SMTP, etc.). Utiliza contratos formales <strong>WSDL</strong> y define <em>envelopes</em>, cabeceras y cuerpo.</p>
+              <div class="code"><button class="copy" data-copy="#soapReq">Copiar</button><pre id="soapReq">POST /ws/Estudiantes HTTP/1.1
 Host: ejemplo.edu
 Content-Type: text/xml; charset=utf-8
 
 &lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
-&lt;soap:Body&gt;
-&lt;GetAlumno xmlns="http://ejemplo.edu/alumnos"&gt;
-  &lt;id&gt;1023&lt;/id&gt;
-&lt;/GetAlumno&gt;
-&lt;/soap:Body&gt;
+  &lt;soap:Body&gt;
+    &lt;GetAlumno xmlns="http://ejemplo.edu/alumnos"&gt;
+      &lt;id&gt;1023&lt;/id&gt;
+    &lt;/GetAlumno&gt;
+  &lt;/soap:Body&gt;
 &lt;/soap:Envelope&gt;</pre></div>
-		  <div class="demo" style="margin-top:10px">
-			<button class="btn primary" onclick="demoSOAP()">Enviar SOAP (simulado)</button>
-			<pre class="code" id="soapLog"></pre>
-		  </div>
-		</article>
-		<article class="card col-6">
-		  <h3>REST (Representational State Transfer)</h3>
-		  <p>Estilo arquitectónico que expone <strong>recursos</strong> vía URLs y opera con <strong>HTTP</strong> y formatos ligeros como <strong>JSON</strong>. Métodos típicos: <span class="pill">GET</span>, <span class="pill">POST</span>, <span class="pill">PUT</span>, <span class="pill">DELETE</span>.</p>
-		  <div class="code"><button class="copy" data-copy="#restReq">Copiar</button><pre id="restReq">GET /api/estudiantes/1023 HTTP/1.1
+              <div class="demo" style="margin-top:10px">
+                <button class="btn primary" onclick="demoSOAP()">Enviar SOAP (simulado)</button>
+                <pre class="code" id="soapLog"></pre>
+              </div>
+            </article>
+            <article class="card col-6">
+              <h3>REST (Representational State Transfer)</h3>
+              <p>Estilo arquitectónico que expone <strong>recursos</strong> vía URLs y opera con <strong>HTTP</strong> y formatos ligeros como <strong>JSON</strong>. Métodos típicos: <span class="pill">GET</span>, <span class="pill">POST</span>, <span class="pill">PUT</span>, <span class="pill">DELETE</span>.</p>
+              <div class="code"><button class="copy" data-copy="#restReq">Copiar</button><pre id="restReq">GET /api/estudiantes/1023 HTTP/1.1
 Host: ejemplo.edu
 Accept: application/json</pre></div>
-		  <div class="demo" style="margin-top:10px">
-			<label>Probar REST:</label>
-			<div style="display:flex;gap:8px;flex-wrap:wrap">
-			  <select id="restMethod">
-				<option>GET</option>
-				<option>POST</option>
-				<option>PUT</option>
-				<option>DELETE</option>
-			  </select>
-			  <input class="input" id="restPath" value="/api/estudiantes/1023" />
-			  <button class="btn" style="background:var(--blue);color:#fff" onclick="demoREST()">Ejecutar</button>
-			</div>
-			<textarea id="restBody" rows="3" placeholder='{
-"nombre": "Ana",
-"programa": "Sistemas"
+              <div class="demo" style="margin-top:10px">
+                <label>Probar REST:</label>
+                <div style="display:flex;gap:8px;flex-wrap:wrap">
+                  <select id="restMethod">
+                    <option>GET</option>
+                    <option>POST</option>
+                    <option>PUT</option>
+                    <option>DELETE</option>
+                  </select>
+                  <input class="input" id="restPath" value="/api/estudiantes/1023" />
+                  <button class="btn" style="background:var(--blue);color:#fff" onclick="demoREST()">Ejecutar</button>
+                </div>
+                <textarea id="restBody" rows="3" placeholder='{
+  "nombre": "Ana",
+  "programa": "Sistemas"
 }'></textarea>
-			<pre class="code" id="restLog"></pre>
-		  </div>
-		</article>
-	  </div>
-	</section>
+                <pre class="code" id="restLog"></pre>
+              </div>
+            </article>
+          </div>
+        </section>
 
-	<!-- 5. Protocolos y estándares -->
-	<section id="protocolos">
-	  <h2 class="section-title"><span class="dot"></span>Protocolos y estándares relacionados</h2>
-	  <div class="cards">
-		<article class="card col-4">
-		  <h3>HTTP</h3>
-		  <p>Protocolo de aplicación para la transferencia de documentos. Define métodos (GET/POST/PUT/DELETE), códigos de estado (200, 404, 500) y cabeceras.</p>
-		  <div class="demo">
-			<button class="btn" style="background:var(--blue);color:#fff" onclick="httpStatus(200)">200 OK</button>
-			<button class="btn" style="background:var(--blue);color:#fff" onclick="httpStatus(404)">404</button>
-			<button class="btn" style="background:var(--blue);color:#fff" onclick="httpStatus(500)">500</button>
-			<pre class="code" id="httpLog"></pre>
-		  </div>
-		</article>
-		<article class="card col-4">
-		  <h3>XML &amp; JSON</h3>
-		  <p>Formatos de intercambio de datos. <strong>XML</strong> es etiquetado y extensible; <strong>JSON</strong> es liviano y fácil de leer en JavaScript.</p>
-		  <div class="code"><pre>&lt;alumno&gt;\n  &lt;id&gt;1023&lt;/id&gt;\n  &lt;nombre&gt;Ana&lt;/nombre&gt;\n&lt;/alumno&gt;</pre></div>
-		  <div class="code" style="margin-top:8px"><pre>{
-"id": 1023,
-"nombre": "Ana"
+        <!-- 5. Protocolos y estándares -->
+        <section id="protocolos">
+          <h2 class="section-title"><span class="dot"></span>Protocolos y estándares relacionados</h2>
+          <div class="cards">
+            <article class="card col-4">
+              <h3>HTTP</h3>
+              <p>Protocolo de aplicación para la transferencia de documentos. Define métodos (GET/POST/PUT/DELETE), códigos de estado (200, 404, 500) y cabeceras.</p>
+              <div class="demo">
+                <button class="btn" style="background:var(--blue);color:#fff" onclick="httpStatus(200)">200 OK</button>
+                <button class="btn" style="background:var(--blue);color:#fff" onclick="httpStatus(404)">404</button>
+                <button class="btn" style="background:var(--blue);color:#fff" onclick="httpStatus(500)">500</button>
+                <pre class="code" id="httpLog"></pre>
+              </div>
+            </article>
+            <article class="card col-4">
+              <h3>XML &amp; JSON</h3>
+              <p>Formatos de intercambio de datos. <strong>XML</strong> es etiquetado y extensible; <strong>JSON</strong> es liviano y fácil de leer en JavaScript.</p>
+              <div class="code"><pre>&lt;alumno&gt;\n  &lt;id&gt;1023&lt;/id&gt;\n  &lt;nombre&gt;Ana&lt;/nombre&gt;\n&lt;/alumno&gt;</pre></div>
+              <div class="code" style="margin-top:8px"><pre>{
+  "id": 1023,
+  "nombre": "Ana"
 }</pre></div>
-		</article>
-		<article class="card col-4">
-		  <h3>WSDL &amp; UDDI</h3>
-		  <p><strong>WSDL</strong> describe operaciones y tipos de un servicio SOAP. <strong>UDDI</strong> es (o fue) un registro donde se publicaban/descubrían servicios.</p>
-		  <div class="code"><pre>&lt;definitions name="AlumnoWS" targetNamespace="http://ejemplo.edu"&gt;\n  &lt;message name="GetAlumnoRequest"/&gt;\n  &lt;portType name="AlumnoPort"&gt;\n    &lt;operation name="GetAlumno"/&gt;\n  &lt;/portType&gt;\n&lt;/definitions&gt;</pre></div>
-		  <div class="demo" style="margin-top:8px">
-			<label>Buscar en un registro UDDI (simulado):</label>
-			<input class="input" id="uddiQuery" value="Alumno" />
-			<button class="btn primary" onclick="buscarUDDI()">Buscar</button>
-			<pre class="code" id="uddiLog"></pre>
-		  </div>
-		</article>
-	  </div>
-	</section>
+            </article>
+            <article class="card col-4">
+              <h3>WSDL &amp; UDDI</h3>
+              <p><strong>WSDL</strong> describe operaciones y tipos de un servicio SOAP. <strong>UDDI</strong> es (o fue) un registro donde se publicaban/descubrían servicios.</p>
+              <div class="code"><pre>&lt;definitions name="AlumnoWS" targetNamespace="http://ejemplo.edu"&gt;\n  &lt;message name="GetAlumnoRequest"/&gt;\n  &lt;portType name="AlumnoPort"&gt;\n    &lt;operation name="GetAlumno"/&gt;\n  &lt;/portType&gt;\n&lt;/definitions&gt;</pre></div>
+              <div class="demo" style="margin-top:8px">
+                <label>Buscar en un registro UDDI (simulado):</label>
+                <input class="input" id="uddiQuery" value="Alumno" />
+                <button class="btn primary" onclick="buscarUDDI()">Buscar</button>
+                <pre class="code" id="uddiLog"></pre>
+              </div>
+            </article>
+          </div>
+        </section>
 
-	<!-- Banda CTA -->
-	<section class="band">
-	  <div class="wrap call">
-		<p>¿Quieres reutilizar este contenido en clase? Puedes descargar el HTML o copiar los fragmentos de código con el botón “Copiar”.</p>
-		<a class="btn primary" href="#definicion">Volver al inicio</a>
-	  </div>
-	</section>
-  </div>
- </main>
-  
+        <!-- Banda CTA -->
+        <section class="band">
+          <div class="wrap call">
+            <p>¿Quieres reutilizar este contenido en clase? Puedes descargar el HTML o copiar los fragmentos de código con el botón “Copiar”.</p>
+            <a class="btn primary" href="#definicion">Volver al inicio</a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
   <footer>
     <div class="wrap">
       <div class="cols">
@@ -255,7 +268,114 @@ Accept: application/json</pre></div>
       </div>
     </div>
   </footer>
-  <script src="Script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+  <script>
+    // Utilidad copiar
+    document.querySelectorAll('.copy').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const sel = document.querySelector(btn.dataset.copy);
+        navigator.clipboard.writeText(sel.innerText).then(()=>{
+          btn.textContent='Copiado'; setTimeout(()=>btn.textContent='Copiar',1200);
+        });
+      });
+    });
+
+    // DEMO 1: Definición / Clima
+    function demoClima(){
+      const method = document.getElementById('httpMethod').value;
+      const url = document.getElementById('endpoint').value;
+      const log = document.getElementById('demoClimaLog');
+      const base = { ciudad: 'Zarzal', temperatura: 29, estado: 'Soleado', unidad: '°C' };
+      const respuesta = method==='GET' ? base : { status:'OK', recibido:{ ciudad:'Zarzal' }, createdAt:new Date().toISOString() };
+      log.textContent = `> ${method} ${url} HTTP/1.1\n< 200 OK\n${JSON.stringify(respuesta,null,2)}`;
+    }
+
+    // DEMO 2: SOA orquestación
+    function simularSOA(){
+      const steps = [
+        '1) Servicio Estudiantes valida requisitos…',
+        '2) Servicio Pagos registra consignación…',
+        '3) Servicio Horarios asigna grupo…',
+        '✔ Proceso completo: matrícula confirmada.'
+      ];
+      const log = document.getElementById('soaLog');
+      log.textContent='';
+      let i=0;
+      const timer=setInterval(()=>{
+        log.textContent += steps[i] + '\n';
+        i++; if(i===steps.length) clearInterval(timer);
+      }, 650);
+    }
+
+    // DEMO 3: Beneficios/Desafíos - latencia
+    function testLatencia(){
+      const log = document.getElementById('latenciaLog');
+      log.textContent = 'Invocando servicio…';
+      const delay = Math.floor(Math.random()*1200)+300; // 300-1500ms
+      const fallo = Math.random()<0.25; // 25% falla
+      setTimeout(()=>{
+        if(fallo){ log.textContent = '⛔ 504 Gateway Timeout — adoptar reintentos/backoff y circuit breaker.'; }
+        else { log.textContent = `✅ 200 OK — respuesta en ${delay} ms`; }
+      }, delay);
+    }
+
+    // DEMO 4: SOAP
+    function demoSOAP(){
+      const log = document.getElementById('soapLog');
+      const xml = `<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">\n  <soap:Body>\n    <GetAlumnoResponse xmlns="http://ejemplo.edu/alumnos">\n      <alumno><id>1023</id><nombre>Ana</nombre></alumno>\n    </GetAlumnoResponse>\n  </soap:Body>\n</soap:Envelope>`;
+      log.textContent = 'Enviando…\n' + xml;
+    }
+
+    // DEMO 5: REST
+    const store = {
+      '/api/estudiantes/1023': { id:1023, nombre:'Ana', programa:'Sistemas' },
+      '/api/estudiantes': [ {id:1001,nombre:'Luis'}, {id:1023,nombre:'Ana'} ]
+    };
+
+    function demoREST(){
+      const m = document.getElementById('restMethod').value;
+      const p = document.getElementById('restPath').value.trim();
+      const bodyRaw = document.getElementById('restBody').value;
+      const log = document.getElementById('restLog');
+      try{
+        if(m==='GET'){
+          if(store[p]) log.textContent = JSON.stringify(store[p],null,2);
+          else log.textContent = '404 Not Found';
+        } else if(m==='POST'){
+          const data = JSON.parse(bodyRaw || '{}');
+          if(p==='/api/estudiantes'){
+            data.id = data.id||Math.floor(Math.random()*9000)+1000;
+            store['/api/estudiantes'].push({id:data.id,nombre:data.nombre});
+            store[`/api/estudiantes/${data.id}`]=data;
+            log.textContent = '201 Created\n' + JSON.stringify(data,null,2);
+          } else { log.textContent='400 Bad Request'; }
+        } else if(m==='PUT'){
+          const data = JSON.parse(bodyRaw||'{}');
+          if(store[p]){ store[p] = {...store[p], ...data}; log.textContent = '200 OK\n'+JSON.stringify(store[p],null,2);} else { log.textContent='404 Not Found'; }
+        } else if(m==='DELETE'){
+          if(store[p]){ delete store[p]; log.textContent='204 No Content'; } else { log.textContent='404 Not Found'; }
+        }
+      }catch(e){ log.textContent='Error de parseo JSON'; }
+    }
+
+    // DEMO 6: HTTP códigos
+    function httpStatus(code){
+      const map = {200:'OK',404:'Not Found',500:'Internal Server Error'};
+      document.getElementById('httpLog').textContent = `${code} ${map[code]}\nDate: ${new Date().toUTCString()}\nServer: demo/1.0`;
+    }
+
+    // DEMO 7: UDDI
+    function buscarUDDI(){
+      const q = (document.getElementById('uddiQuery').value||'').toLowerCase();
+      const registro = [
+        { nombre:'AlumnoWS', tipo:'SOAP', wsdl:'http://ejemplo.edu/ws/alumno?wsdl' },
+        { nombre:'PagosAPI', tipo:'REST', url:'http://ejemplo.edu/api/pagos' },
+        { nombre:'HorariosAPI', tipo:'REST', url:'http://ejemplo.edu/api/horarios' },
+      ];
+      const res = registro.filter(s=>s.nombre.toLowerCase().includes(q));
+      document.getElementById('uddiLog').textContent = res.length? JSON.stringify(res,null,2) : 'Sin resultados';
+    }
+  </script>
 </body>
 </html>
+
