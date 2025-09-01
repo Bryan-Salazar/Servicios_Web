@@ -18,6 +18,9 @@
 .my-gradient {
   background: linear-gradient(to top, var(--azulos), var(--azul));
 }
+.section-title{display:flex;align-items:center;gap:10px;color:var(--azulos)}
+.section-title .dot{width:12px;height:12px;border-radius:50%;background:var(--amarillo)
+}
 .cards-flex {
   display: flex;
   flex-wrap: wrap;
@@ -58,3 +61,4 @@ cursor:pointer;box-shadow:var(--sombra)}
 .navbar .nav-link:hover::after {
   width: 100%;
 }
+
