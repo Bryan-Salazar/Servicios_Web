@@ -1,21 +1,60 @@
+:root{
+  --azul:#1b3b6f; --azulos:#0d2a4a; --blanco:#ffffff; --gris:#f0f0f0;
+  --amarillo:#f2c200; --amarilloos:#caa500; --bgcod:#0f172a; --texcod:#e2e8f0;
+  --sombra:0 10px 20px rgba(13,42,74,.12); --rad:18px;
+}
 .bg-blanco {
-  background-color: #ffffff; /* Color azul oscuro */
+  background-color: var(--blanco);
 }
 .bg-gris {
-  background-color: #f0f0f0; /* Color azul oscuro */
+  background-color: var(--gris);
 }
 .bg-azul {
-  background-color: #1b3b6f; /* Color azul oscuro */
+  background-color: var(--azul);
+}
+.bg-azulos {
+  background-color: var(--azulos);
 }
 .my-gradient {
-  background: linear-gradient(to top, #0d2a4a, #1b3b6f); /* negro a bg-dark */
+  background: linear-gradient(to top, var(--azulos), var(--azul));
 }
 .cards-flex {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem; /* separación entre cards */
+  gap: 1rem;
 }
 .cards-flex .card {
   flex: 1 1 48%; /* ~dos columnas */
-  min-width: 280px; /* evita que sean demasiado pequeñas */
+  min-width: 230px; /* evita que sean demasiado pequeñas */
+}
+.code{position:relative;background:var(--bgcod);color:var(--texcod);
+  border-radius:14px;padding:14px;overflow:auto;font-family:ui-monospace,Consolas,monospace;
+  font-size:12.5px;line-height:1.45
+}
+.demo{display:grid;gap:10px}
+.input,select,textarea{width:100%;padding:10px;border-radius:12px;
+  border:1px solid #dde3ee;background:var(--blanco)}
+.demo .btn{border-radius:12px}
+.btn{appearance:none;border:0;border-radius:999px;padding:12px 18px;font-weight:700;
+cursor:pointer;box-shadow:var(--sombra)}
+.btn.primary{background:var(--amarillo);color:#1b1b1b}
+.btn.primary:hover{background:var(--amarilloos)}
+.btn.ghost{background:transparent;border:2px solid rgba(255,255,255,.6);color:var(--blanco)}
+.btn.ghost:hover{border-color:var(--blanco);color:var(--azul); background:var(--gris)}
+.navbar .nav-link {
+  position: relative;
+  transition: color 0.3s ease;
+}
+.navbar .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: var(--amarillo);
+  transition: width 0.3s ease;
+}
+.navbar .nav-link:hover::after {
+  width: 100%;
 }
