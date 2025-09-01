@@ -9,28 +9,28 @@
 </head>
 <body>
 
-  <nav class="navbar navbar-expand-md navbar-dark bg-azul">
+  <nav class="navbar navbar-expand-md navbar-dark sticky-top bg-azul">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#" style="color:#e8f0ff">Servicios Web · Guía Interactiva</a>
+      <a class="navbar-brand fs-4 fw-bold" href="#" style="color:var(--blanco)">Servicios Web · Guía Interactiva</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#Definicion" style="color:#e8f0ff">Definición</a>
+            <a class="nav-link active fw-bold" aria-current="page" href="#Definicion" style="color:#e8f0ff">Definición</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#SOA" style="color:#e8f0ff">SOA</a>
+            <a class="nav-link fw-bold" href="#SOA" style="color:#e8f0ff">SOA</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#Beneficios" style="color:#e8f0ff">Beneficios</a>
+            <a class="nav-link fw-bold" href="#Beneficios" style="color:#e8f0ff">Beneficios</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#Tipos" style="color:#e8f0ff">Tipos</a>
+            <a class="nav-link fw-bold" href="#Tipos" style="color:#e8f0ff">Tipos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#Protocolos" style="color:#e8f0ff">Protocolos</a>
+            <a class="nav-link fw-bold" href="#Protocolos" style="color:#e8f0ff">Protocolos</a>
           </li>
         </ul>
       </div>
@@ -39,16 +39,16 @@
 
   <div id="Banner" class="container-fluid bg-azul my-gradient py-5">
     <div class="container-lg">
-      <div class="row ">
-        <div class="col-12 col-md-6">
+      <div class="row">
+        <div class="col-12 col-md-6 py-3">
           <h1 style="color:#e8f0ff; font-size:40px;line-height:1.1;margin:10px 0 8px">Comprende los Servicios Web con ejemplos interactivos</h1>
           <p class="subtitle" style="color:#e8f0ffd5">Conceptos esenciales, arquitectura SOA, tipos (SOAP/REST) y los estándares claves — con pequeñas simulaciones para ver cómo funcionan.</p>
           <div class="cta">
-            <a class="btn primary" href="#definicion">Inicar</a>
-            <a class="btn ghost" href="#tipos">Ver demostración</a>
+            <a class="btn primary" href="#Definicion">Inicar</a>
+            <a class="btn ghost" href="#Tipos">Ver demostración</a>
           </div>
         </div>
-        <div class="col-12 col-md-6">
+        <div class="col-12 col-md-6 py-3">
           <div class="card p-3" style="background:rgba(255,255,255,.1);backdrop-filter: blur(6px);border:1px solid rgba(255,255,255,.2);color:#fff">
             <h3 style="margin:0 0 6px">Mini mapa</h3>
             <p class="subtitle" style="color:#e8f0ff">Cómo fluye una petición:</p>
@@ -88,7 +88,7 @@
                 <option>POST</option>
               </select>
               <input class="input" id="endpoint" value="/api/clima?ciudad=Zarzal"/>
-              <button class="btn" style="background:var(--blue);color:#fff" onclick="demoClima()">Enviar</button>
+              <button class="btn" style="background:var(--azul);color:var(--blanco)" onclick="demoClima()">Enviar</button>
             </div>
             <pre class="code" id="demoClimaLog"></pre>
           </div>
@@ -110,6 +110,7 @@
           <p><span class="pill">Ejemplo aplicado</span></p>
           <p>Proceso de matrícula orquesta 3 servicios: <em>Estudiantes</em>, <em>Pagos</em> y <em>Horarios</em>. Presiona para ver el flujo.</p>
           <button class="btn primary" onclick="simularSOA()">Simular matrícula</button>
+		  <br/>
           <pre class="code" id="soaLog"></pre>
         </article>
       </div>
@@ -133,7 +134,7 @@
             <li>Latencia y manejo de fallos en red.</li>
           </ul>
           <div class="demo">
-            <button class="btn" style="background:var(--navy);color:#fff" onclick="testLatencia()">Simular latencia/fallo</button>
+            <button class="btn" style="background:var(--azul);color:var(--blanco)" onclick="testLatencia()">Simular latencia/fallo</button>
             <pre class="code" id="latenciaLog"></pre>
           </div>
         </article>
@@ -143,7 +144,7 @@
         <article class="card col-12 col-md-6 p-2">
           <h3>SOAP (Simple Object Access Protocol)</h3>
           <p>Protocolo basado en <strong>XML</strong> con mensajes estándar (sobre HTTP, SMTP, etc.). Utiliza contratos formales <strong>WSDL</strong> y define <em>envelopes</em>, cabeceras y cuerpo.</p>
-          <div class="code"><button class="copy" data-copy="#soapReq">Copiar</button><pre id="soapReq">POST /ws/Estudiantes HTTP/1.1
+          <div class="code"><pre id="soapReq">POST /ws/Estudiantes HTTP/1.1
 Host: ejemplo.edu
 Content-Type: text/xml; charset=utf-8
 
@@ -162,7 +163,7 @@ Content-Type: text/xml; charset=utf-8
         <article class="card col-12 col-md-6 p-2">
           <h3>REST (Representational State Transfer)</h3>
           <p>Estilo arquitectónico que expone <strong>recursos</strong> vía URLs y opera con <strong>HTTP</strong> y formatos ligeros como <strong>JSON</strong>. Métodos típicos: <span class="pill">GET</span>, <span class="pill">POST</span>, <span class="pill">PUT</span>, <span class="pill">DELETE</span>.</p>
-          <div class="code"><button class="copy" data-copy="#restReq">Copiar</button><pre id="restReq">GET /api/estudiantes/1023 HTTP/1.1
+          <div class="code"><pre id="restReq">GET /api/estudiantes/1023 HTTP/1.1
 Host: ejemplo.edu
 Accept: application/json</pre></div>
           <div class="demo" style="margin-top:10px">
@@ -175,7 +176,7 @@ Accept: application/json</pre></div>
                 <option>DELETE</option>
               </select>
               <input class="input" id="restPath" value="/api/estudiantes/1023" />
-              <button class="btn" style="background:var(--blue);color:#fff" onclick="demoREST()">Ejecutar</button>
+              <button class="btn" style="background:var(--azul);color:var(--blanco)" onclick="demoREST()">Ejecutar</button>
             </div>
             <textarea id="restBody" rows="3" placeholder='{
 "nombre": "Ana",
@@ -187,17 +188,17 @@ Accept: application/json</pre></div>
       </div>
       <h2 id= "Protocolos" class="section-title pt-5"><span class="dot"></span>Protocolos y estándares relacionados</h2>
       <div class="cards-flex p-2">
-        <article class="card col-12 col-md-6 p-2">
+        <article class="card col-12 col-md-4 p-2">
           <h3>HTTP</h3>
               <p>Protocolo de aplicación para la transferencia de documentos. Define métodos (GET/POST/PUT/DELETE), códigos de estado (200, 404, 500) y cabeceras.</p>
               <div class="demo">
-                <button class="btn" style="background:var(--blue);color:#fff" onclick="httpStatus(200)">200 OK</button>
-                <button class="btn" style="background:var(--blue);color:#fff" onclick="httpStatus(404)">404</button>
-                <button class="btn" style="background:var(--blue);color:#fff" onclick="httpStatus(500)">500</button>
+                <button class="btn" style="background:var(--azul);color:var(--blanco)" onclick="httpStatus(200)">200 OK</button>
+                <button class="btn" style="background:var(--azul);color:var(--blanco)" onclick="httpStatus(404)">404</button>
+                <button class="btn" style="background:var(--azul);color:var(--blanco)" onclick="httpStatus(500)">500</button>
                 <pre class="code" id="httpLog"></pre>
               </div>
         </article>
-        <article class="card col-4 p-2">
+        <article class="card col-12 col-md-4 p-2">
           <h3>XML &amp; JSON</h3>
           <p>Formatos de intercambio de datos. <strong>XML</strong> es etiquetado y extensible; <strong>JSON</strong> es liviano y fácil de leer en JavaScript.</p>
           <div class="code"><pre>&lt;alumno&gt;\n  &lt;id&gt;1023&lt;/id&gt;\n  &lt;nombre&gt;Ana&lt;/nombre&gt;\n&lt;/alumno&gt;</pre></div>
@@ -206,7 +207,7 @@ Accept: application/json</pre></div>
 "nombre": "Ana"
 }</pre></div>
         </article>
-        <article class="card col-12 col-md-6 p-2">
+        <article class="card col-12 col-md-4 p-2">
           <h3>WSDL &amp; UDDI</h3>
           <p><strong>WSDL</strong> describe operaciones y tipos de un servicio SOAP. <strong>UDDI</strong> es (o fue) un registro donde se publicaban/descubrían servicios.</p>
           <div class="code"><pre>&lt;definitions name="AlumnoWS" targetNamespace="http://ejemplo.edu"&gt;\n  &lt;message name="GetAlumnoRequest"/&gt;\n  &lt;portType name="AlumnoPort"&gt;\n    &lt;operation name="GetAlumno"/&gt;\n  &lt;/portType&gt;\n&lt;/definitions&gt;</pre></div>
@@ -221,9 +222,21 @@ Accept: application/json</pre></div>
     </div>
   </div>
 
-  <PieDePagina>
-    
-  </PieDePagina>
+  <footer>
+    <div class="container-fluid bg-azulos my-gradient py-5">
+      <div class="container-lg">
+        <div class="row text-center">
+          <h4 style="margin:0 0 8px;color:var(--gris)">Recuerda</h4>
+          <p style="margin:1; color:var(--blanco">SOAP = contratos formales y XML; REST = recursos sobre HTTP y JSON (usualmente). Ambos pueden coexistir según necesidades.</p>
+        </div>
+      </div>
+	  <div class="container-lg text-center pt-5">
+		<p style="margin:0; fs-2; color:var(--blanco">Tecnología en Gestión de Sistemas Informáticos</p>
+		<p style="margin:0; color:var(--blanco">Instituto de Educación Técnica Profesional de Roldanillo, Valle - INTEP.</p>
+		<p style="margin:0; color:var(--blanco">©Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
   <script src="Script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
